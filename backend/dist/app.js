@@ -1,0 +1,23 @@
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import authRoutes from "./routes/auth.routes.js";
+import profileRoutes from "./routes/profile.routes.js";
+import skillRoutes from "./routes/skill.routes.js";
+import careerRoutes from "./routes/career.routes.js";
+import roadmapRoutes from "./routes/roadmap.routes.js";
+const app = express();
+app.use(helmet());
+app.use(cors());
+app.use(express.json({ limit: "1mb" }));
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
+app.get("/api/v1/health", (_, res) => {
+    res.status(200).json({ status: "ok", service: "career-resilience-api" });
+});
+export default app;
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/profile", profileRoutes);
+app.use("/api/v1/skills", skillRoutes);
+app.use("/api/v1/careers", careerRoutes);
+app.use("/api/v1/roadmaps", roadmapRoutes);

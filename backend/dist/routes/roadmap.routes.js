@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { authenticate } from "../middleware/auth.middleware.js";
+import { generateRoadmapController, getRoadmapController, listRoadmapsController, updateRoadmapItemStatusController } from "../controllers/roadmap.controller.js";
+const router = Router();
+router.use(authenticate);
+router.post("/generate", generateRoadmapController);
+router.get("/", listRoadmapsController);
+router.patch("/items/:itemId/status", updateRoadmapItemStatusController);
+router.get("/:roadmapId", getRoadmapController);
+export default router;

@@ -1,0 +1,12 @@
+import { Router } from "express";
+import { authenticate } from "../middleware/auth.middleware.js";
+import { addUserSkillController, deleteUserSkillController, getProfileController, listUserSkillsController, updateProfileController, updateUserSkillController } from "../controllers/profile.controller.js";
+const router = Router();
+router.use(authenticate);
+router.get("/", getProfileController);
+router.put("/", updateProfileController);
+router.get("/skills", listUserSkillsController);
+router.post("/skills", addUserSkillController);
+router.put("/skills/:skillId", updateUserSkillController);
+router.delete("/skills/:skillId", deleteUserSkillController);
+export default router;
