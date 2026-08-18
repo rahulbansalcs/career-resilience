@@ -85,7 +85,7 @@ return <div className="dashboard-page">
 <button className="text-button" onClick={()=>navigate("/careers")}>View analysis <ArrowUpRight size={15}/></button>
 </div>
 <div className="readiness-content">
-<div className="score-ring" style={{background:`conic-gradient(#2563eb 0 ${readiness}%,#e5e7eb ${readiness}% 100%)`}}><div><strong>{analysis?Math.round(readiness):"—"}</strong><span>/100</span></div></div>
+<div className="score-ring" style={{background:`conic-gradient(#2563eb 0 ${readiness}%,#e5e7eb ${readiness}% 100%)`}}><div className="score-value"><strong>{analysis?Math.round(readiness):"—"}</strong><span>/100</span></div></div>
 <div className="readiness-details">
 <h3>{career?.title||"Choose your target career"}</h3>
 <p>{analysis?`${readinessLabel}. Your profile currently matches ${matchedSkills} of ${requiredSkills} required skills.`:"Explore career paths and analyze your current skill profile to calculate your readiness score."}</p>
