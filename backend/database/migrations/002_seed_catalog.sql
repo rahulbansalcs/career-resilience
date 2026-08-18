@@ -2,7 +2,6 @@
 -- PostgreSQL database dump
 --
 
-\restrict 8ovAcdc1fspZ93M4OyKTKZaBmyx3R2ZBlLOByGGxrqeMGKZrVQhjzLxibSvYv3r
 
 -- Dumped from database version 18.4 (Homebrew)
 -- Dumped by pg_dump version 18.4 (Homebrew)
@@ -173,5 +172,4 @@ INSERT INTO public.career_role_skills (id, career_role_id, skill_id, importance,
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 8ovAcdc1fspZ93M4OyKTKZaBmyx3R2ZBlLOByGGxrqeMGKZrVQhjzLxibSvYv3r
 
