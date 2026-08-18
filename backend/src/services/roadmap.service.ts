@@ -27,8 +27,13 @@ dueDate:null
 return createRoadmapWithItems(userId,careerRoleId,`${role.title} Career Roadmap`,`Personalized skill development roadmap based on your current skills and the requirements of the ${role.title} role.`,items)
 }
 export const listUserRoadmaps=async(userId:string)=>{
-return getRoadmapsByUser(userId)
-}
+    const roadmaps=await getRoadmapsByUser(userId)
+    return Promise.all(roadmaps.map(async roadmap=>{
+    const items=await getRoadmapItems(roadmap.id)
+    const progress=await getRoadmapProgress(roadmap.id)
+    return {...roadmap,items,progress}
+    }))
+    }
 export const getUserRoadmap=async(userId:string,roadmapId:string)=>{
     const roadmap=await getRoadmapById(userId,roadmapId)
     if(!roadmap) return null
